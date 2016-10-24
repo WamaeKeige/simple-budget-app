@@ -1,0 +1,1 @@
+This is a simple PHP budget API it uses Fpdf Plugin to generate the dynamic pdf statements and javascript for its calculations.
