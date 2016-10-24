@@ -1,0 +1,226 @@
+
+<html>
+<head>
+    <script type="text/javascript"><!--
+function updatesum() {
+document.form.sum.value = (document.form.sum1.value -0) + (document.form.sum2.value -0);
+}
+function updatesuml() {
+    document.form.suml.value=(document.form.sum3.value-0)+(document.form.sum4.value-0);
+    //code
+}
+function updatesumex(){
+document.form.sumex.value=(document.form.sum5.value-0)+(document.form.sum6.value-0)+(document.form.sum7.value-0)+(document.form.sum8.value-0);
+}
+function updatesumex2(){
+document.form.sumex2.value=(document.form.sum9.value-0)+(document.form.sum10.value-0)+(document.form.sum11.value-0)+(document.form.sum12.value-0);
+}
+function updatesumnet(){
+document.form.sumnet.value=(document.form.sum.value-0)-(document.form.sumex.value-0);
+}
+function updatesumnet2(){
+document.form.sumnet2.value=(document.form.suml.value-0)-(document.form.sumex2.value-0);
+}
+function updatesuminc(){
+document.form.suminc.value=(document.form.sumnet.value-0)-(document.form.inctax1.value-0);
+}
+function updatesuminc2(){
+document.form.suminc2.value=(document.form.sumnet2.value-0)-(document.form.inctax2.value-0);
+}
+function checkForm(form) { // validation fails if the input is blank 
+if(form.sum1.value == "") { 
+alert("Error: Input is empty!"); 
+form.sum1.focus(); 
+return false; 
+} 
+ var re = /^[\w ]+$/; 
+ if(!re.test(form.sum1.value)) {
+  alert("Error: Input contains invalid characters!"); 
+  form.sum1.focus();
+   return false; 
+   } 
+  // validation was successful return true; }
+
+}
+
+</script>
+    <title>Income Statement Form</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+<!--
+.style1 {font-family: "Times New Roman", Times, serif}
+-->
+    </style>
+</head>
+
+<body>
+<form action="pdf.php" method="POST" name="form" class="form-group" onSubmit="return checkForm(this);">
+<table width="47%" height="1" border="0" align="center" cellpadding="2" cellspacing="3" class="table-hover">,
+<caption>
+<span class="h2 style1">Income Statement</span>
+</caption>
+
+<tr>
+  <td height="30"><a href="index.php">Return to Main </a></td>
+  <td><input name="company" type="text" value="Company Name Goes Here" required></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+<td width="185" height="30"><div align="center"><span class="style1"><strong>For the Years Ending </strong></span></div></td>
+<td width="143">
+  <div align="center">
+    <input name="date" type="date" id="date" size="20" required>
+  </div></td>
+  <td width="134"><div align="center">
+    <input name="date2" type="date" class="table-bordered" id="date2" size="20" required>
+  </div></td>
+</tr>
+<tr>
+  <td><div align="center"><span class="style1"><strong>Revenue</strong></span></div></td>
+  <td>
+    <div align="center"></div>
+  <td>
+    <div align="center"></div>
+  <tr><td><div align="center">
+    <input name="Rev1" type="text" class="text-success" id="Rev1" value="Example  Gross Sales1">
+  </div></td><td><div align="center">
+    <input name="sum1" size="20" onChange="updatesum()" required onSubmit="return checkForm(this);" >
+  </div></td>
+  <td><div align="center">
+    <input  name="sum3"  onChange="updatesuml()" size="20" required>
+  </div></td>
+</tr>
+<tr><td><div align="center">
+  <input name="Rev2" type="text" class="text-success" id="Rev2" value="Example  Gross Sales2" required>
+</div></td><td>
+  <div align="center">
+    <input name="sum2"   onChange="updatesum()" size="20" required>
+  </div></td>
+  <td><div align="center">
+    <input name="sum4"    onChange="updatesuml()" size="20" required>
+  </div></td>
+</tr>
+<tr>
+  <td><div align="center"><span class="style1"><strong>*Net Revenue </strong></span></div></td>
+  <td><div align="center">
+    <input type="text" name="sum" readonly="border:0px" size="20">
+  </div></td>
+  <td><div align="center">
+    <input name="suml" type="text" size="20" readonly="border:0px">
+  </div></td>
+</tr>
+<tr>
+  <td><div align="center"><span class="style1"><strong>Expenses</strong></span></div></td>
+  <td><div align="center"></div></td>
+  <td><div align="center"></div></td>
+</tr>
+<tr><td height="26"><div align="center">
+  <input name="Exp1" type="text" class="text-success" id="Exp1" value="Example Rent">
+</div></td><td><div align="center">
+  <input  name="sum5" type="number" class="text-success" id="sum5" onChange="updatesumex()" size="20" required>
+</div></td>
+  <td><div align="center">
+    <input name="sum9"  type="number" class="text-success" id="sum9" onChange="updatesumex2()" size="20" required>
+  </div></td>
+</tr>
+<tr><td><div align="center">
+  <input name="Exp2" type="text" class="text-success" id="Exp2">
+</div></td><td><div align="center">
+  <input name="sum6" type="number" class="text-success" id="sum6" onChange="updatesumex()" size="20" required>
+</div></td>
+  <td><div align="center">
+    <input  name="sum10" class="text-success" onChange="updatesumex2()"  size="20" required>
+  </div></td>
+</tr>
+<tr><td><div align="center">
+  <input name="Exp3" type="text" class="text-success" id="Exp3">
+</div></td><td><div align="center">
+  <input name="sum7" type="text" class="text-success" onChange="updatesumex()" size="20" required>
+</div></td>
+  <td><div align="center">
+    <input name="sum11" type="text" class="text-success" onChange="updatesumex2()" size="20" required>
+  </div></td>
+</tr>
+<tr>
+  <td><div align="center">
+    <input name="Exp4" type="text" id="Exp4">
+  </div></td>
+  <td><div align="center">
+    <input name="sum8" type="text" id="sum8" size="20" onChange="updatesumex()" required>
+  </div></td>
+  <td><div align="center">
+    <input name="sum12" type="text" onChange="updatesumex2()" size="20" required>
+  </div></td>
+</tr>
+<tr>
+  <td><div align="center"></div></td>
+  <td><div align="center"></div></td>
+  <td><div align="center"></div></td>
+</tr>
+<tr>
+  <td><div align="center"><strong class="text-justify style1">*Total Operating Expenses </strong></div></td>
+  <td><div align="center">
+    <input name="sumex" type="text" id="sumex" size="20" readonly="border:0px">
+  </div></td>
+  <td><div align="center">
+    <input name="sumex2" type="text" id="sumex2" size="20" readonly="border:0px">
+  </div></td>
+</tr>
+<tr>
+  <td><div align="center"></div></td>
+  <td><div align="center"></div></td>
+  <td><div align="center"></div></td>
+</tr>
+<tr>
+  <td><div align="center"><span class="style1"><strong>Net Income Before Taxes</strong></span> </div></td>
+  <td><div align="center">
+    <input name="sumnet" type="text" onClick="updatesumnet()" value="click to compute" size="20" readonly="border:0px">
+  </div></td>
+  <td><div align="center">
+    <input name="sumnet2" type="text"  onClick="updatesumnet2()" value="click to compute" size="20" readonly="border:0px">
+  </div></td>
+</tr>
+<tr>
+  <td><div align="center"><span class="style1"><strong>Income Tax expense </strong></span></div></td>
+  <td><div align="center">
+    <input name="inctax1" type="number" id="inctax1" size="20">
+  </div></td>
+  <td><div align="center">
+    <input name="inctax2" type="text" id="inctax2" size="20">
+  </div></td>
+</tr>
+<tr>
+  <td><div align="center"></div></td>
+  <td><div align="center"></div></td>
+  <td><div align="center"></div></td>
+</tr>
+<tr>
+  <td><div align="center"><span class="style1"><strong>*Net Income </strong></span></div></td>
+  <td><div align="center">
+    <input name="suminc" type="text" id="suminc" onClick="updatesuminc()" value="Click for net income" size="20" readonly="border:0px">
+  </div></td>
+  <td><div align="center">
+    <input name="suminc2" type="text" id="suminc2" onClick="updatesuminc2()" value="click for net income" size="20" readonly="border:0px">
+  </div></td>
+</tr>
+<tr>
+  <td><div align="center"></div></td>
+  <td><div align="center"></div></td>
+  <td><div align="center"></div></td>
+</tr>
+<tr>
+  <td><div align="center"></div></td>
+  <td><div align="center"></div></td>
+  <td><div align="center">
+    <input name="pdf" type="submit" class="btn-success" value="Load Pdf">
+  </div></td>
+</tr>
+</table>
+  <h2><a href="pdf.php"> </a>  </h2>
+</form>
+</pre>
+</body>
+
+
+
+</html>
